@@ -17,7 +17,8 @@ RUN cd /var/www/html && \
     rm tiny.zip && \
     mv tinyfilemanager-2.5.0 tiny && \
     mv tiny/tinyfilemanager.php tiny/index.php && \
-    sed -i "s/\$root_path =.*;/\$root_path = \$_SERVER['DOCUMENT_ROOT'];/g" tiny/index.php
+    sed -i "s/\$root_path =.*;/\$root_path = \$_SERVER['DOCUMENT_ROOT'];/g" tiny/index.php && \
+    sed -i "s/\$exclude_items = array();/\$exclude_items = ['tiny'];/g" tiny/index.php
 
 RUN chown -R www-data:www-data /var/www
 EXPOSE 80
